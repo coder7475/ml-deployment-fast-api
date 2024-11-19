@@ -31,3 +31,19 @@ class IrisInput(BaseModel):
                 "petal_width": 0.2,
             }
         }
+
+
+"""
+designing the response input model
+"""
+
+class IrisResponse(BaseModel):
+    predicted_species: str
+    probability: float
+    
+
+"""
+
+We have to define the mapping of the species
+
+"""
