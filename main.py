@@ -62,3 +62,25 @@ async def root():
     return {
         "message": "Welcome to the Iris Classifier API"
     }
+
+# Prediction endpoint
+@app.post("/predict", response_model=IrisResponse)
+# Function for `/predict` route
+async def predict(iris_input: IrisInput):
+    try:
+        features = np.array([[
+            iris_input.sepal_length, 
+            iris_input.sepal_width, 
+            iris_input.petal_length, 
+            iris_input.petal_width
+        ]])
+
+        prediction = model.predict(features)[0]
+        probability = np.max(model.predict_proba(features))
+        
+        return IrisResponse(
+            predicted_species = SPECIES_MAP[prediction],
+            probability=float(probability)
+        )
+    except Exception as e:
+        return HTTPException(status_code=500, detail=str(e))
