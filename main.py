@@ -53,3 +53,12 @@ SPECIES_MAP = {
     1: "versicolor",
     2: "virginica"
 }
+
+# Root route
+
+@app.get("/")
+
+async def root():
+    return {
+        "message": "Welcome to the Iris Classifier API"
+    }
