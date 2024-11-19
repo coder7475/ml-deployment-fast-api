@@ -4,7 +4,6 @@ import joblib
 from pydantic import BaseModel
 import uvicorn
 
-
 app = FastAPI(title="Iris Classifier API", 
               description="API for classifying Iris flower", 
               version="1.0.0")
