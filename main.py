@@ -47,3 +47,9 @@ class IrisResponse(BaseModel):
 We have to define the mapping of the species
 
 """
+
+SPECIES_MAP = {
+    0: "setosa",
+    1: "versicolor",
+    2: "virginica"
+}
